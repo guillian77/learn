@@ -64,7 +64,9 @@ function AddAField(){
     // Créer: bouton supprimer en fonction de "count" <button id="delbtnX(count)">
     lastDelContainer.appendChild(delbtn)
 
-    
+    // Déplacer le curseur sur le dernier champs
+    form.lastChild.getElementsByTagName("input")
+    lastinput[0].focus()
 }
 
 /**
