@@ -21,39 +21,50 @@ var delInput = function() {
  */
 function AddAField(){
     var count = 0
-    var container = document.createElement('div')
-    container.className = "input-group mb-3"
+    count++
+
+    var form = document.getElementById('form')
+
+    // Définir: Conteneur <div class="input-group">
+    var inputContainer = document.createElement('div')
+    inputContainer.className = "input-group mb-3"
     
     
-    // Define input in container
+    // Définir:  <input type="text" />
     var input = document.createElement("input")
     input.className = "form-control"
     input.placeholder = "Etape de la maintenance à effectuer"
     input.name = "operation[]"
     
-    // Define label for the above input
-    var label = document.createElement('div')
-    label.className = "input-group-append"
+    // Définir: conteneur du bouton <div class="input-group-append">
+    var labelContainer = document.createElement('div')
+    labelContainer.className = "input-group-append"
 
-    count++
-    var labelValue = document.createElement('button')
-    labelValue.className = "btn btn-outline-secondary"
-    labelValue.id = "delbtn" + count
-    labelValue.innerHTML = "Supprimer"
-    labelValue.type = "button"
+    // Définir: bouton supprimer <button id="delbtnX">
+    var delbtn = document.createElement('button')
+    delbtn.className = "btn btn-outline-secondary"
+    delbtn.id = "delbtn" + count
+    delbtn.innerHTML = "Supprimer"
+    delbtn.type = "button"
 
     // Ajouter un container à la fin du formulaire
-    document.getElementById("form").appendChild(container)
+    form.appendChild(inputContainer)
 
 
-    // Sélectionner le dernier input du formulaire
-    var lastForm = document.getElementById('form').lastElementChild
-    lastForm.appendChild(input)
-    lastForm.appendChild(label)
+    // Définir: dernier conteneur <div class="input-group">:last-child
+    var lastContainer = form.lastElementChild
+
+    // Créer: input + labelContainer
+    lastContainer.appendChild(input)
+    lastContainer.appendChild(labelContainer)
     
-    // Sélectionner dernier tag
-    var lastLabel = document.getElementById('form').lastElementChild.lastElementChild
-    lastLabel.appendChild(labelValue)
+    // Définir: dernier conteneur bouton supprimer <div class="input-group-append">
+    var lastDelContainer = form.lastElementChild.lastElementChild
+
+    // Créer: bouton supprimer en fonction de "count" <button id="delbtnX(count)">
+    lastDelContainer.appendChild(delbtn)
+
+    
 }
 
 /**
@@ -72,3 +83,11 @@ document.getElementById('form').addEventListener('keydown', function(event) {
 document.getElementById('addButton').addEventListener('click', function(event) {
     AddAField()
 })
+
+function preventUser() {
+    var input = form.getElementsByTagName('input')
+    input.addEventListener("keydown", function(event) {
+        console.log('salut')
+        console.log(event.key)
+    })
+}
