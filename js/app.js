@@ -65,12 +65,12 @@ function AddAField(){
     lastDelContainer.appendChild(delbtn)
 
     // Déplacer le curseur sur le dernier champs
-    form.lastChild.getElementsByTagName("input")
+    var lastinput = form.lastChild.getElementsByTagName("input")
     lastinput[0].focus()
 }
 
 /**
- * Ajouter un champs quand on appuit sur le bouton "Ajouter"
+ * Ajouter un champs quand on appuit sur la touche "Entrer"
  */
 document.getElementById('form').addEventListener('keydown', function(event) {
     if (event.key == "Enter") {
@@ -80,7 +80,7 @@ document.getElementById('form').addEventListener('keydown', function(event) {
 })
 
 /**
- * Ajouter un champs quand on appuit sur "Entrer"
+ * Ajouter un champs quand on appuis sur le bouton HTML "Ajouter"
  */
 document.getElementById('addButton').addEventListener('click', function(event) {
     AddAField()
