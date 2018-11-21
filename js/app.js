@@ -19,9 +19,7 @@ var delInput = function() {
 /**
  * Ajouter un champs
  */
-function AddAField(){
-    var count = 0
-    count++
+function AddAField(count){
 
     var form = document.getElementById('form')
 
@@ -69,13 +67,17 @@ function AddAField(){
     lastinput[0].focus()
 }
 
+// Compter le nombre de champs ajoutés
+var count = 0
+
 /**
  * Ajouter un champs quand on appuit sur la touche "Entrer"
  */
 document.getElementById('form').addEventListener('keydown', function(event) {
     if (event.key == "Enter") {
         event.preventDefault()
-        AddAField()
+        count++
+        AddAField(count)
     }
 })
 
@@ -83,7 +85,8 @@ document.getElementById('form').addEventListener('keydown', function(event) {
  * Ajouter un champs quand on appuis sur le bouton HTML "Ajouter"
  */
 document.getElementById('addButton').addEventListener('click', function(event) {
-    AddAField()
+    count++
+    AddAField(count)
 })
 
 function preventUser() {
